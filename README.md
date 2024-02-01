@@ -1,15 +1,13 @@
 # SICA-1a-Unity-project
-The project is based on Unity 2022.3.18f1, this game will be a First Person Shooter multiplayer.
+The project is based on Unity 2019.4.12f1, this game will be a multiplayer First Person Shooter.
 
 Objectif of the project:
 
-- PlayerMovement
 - ShootingSystem
 - HitSystem
 - RespawnSystem
 - HUD
 - WeaponSystem
-- MultiplayerSystem
 - PauseMenu
 - ScoreSystem
 - ReloadSystem
@@ -21,3 +19,10 @@ Objectif of the project:
 - SoundDesign
 - DedicatedServer
 
+Greg:
+- PlayerMovement ✅
+- MultiplayerSystem
+
+Diogo:
+
+Ricardo:
