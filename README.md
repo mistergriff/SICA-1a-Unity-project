@@ -3,26 +3,27 @@ The project is based on Unity 2019.4.12f1, this game will be a multiplayer First
 
 Objectif of the project:
 
-- ShootingSystem
-- HitSystem
-- RespawnSystem
-- HUD
-- WeaponSystem
-- PauseMenu
-- ScoreSystem
-- ReloadSystem
-- HealSystem
-- AmmoSystem
-- UserInformationSystem
-- Drop/PickupSystem
-- MapSystem
-- SoundDesign
-- DedicatedServer
-
 Greg:
 - PlayerMovement ✅
 - MultiplayerSystem
+- ScoreSystem
+- HealSystem
+- RespawnSystem
+- Drop/PickupSystem
+- UserInformationSystem
 
 Diogo:
+- WeaponSystem
+- ReloadSystem
+- ShootingSystem
+- HitSystem
+- AmmoSystem
 
 Ricardo:
+- PauseMenu
+- HUD
+- MapSystem
+- SoundDesign
+
+Optional :
+- DedicatedServer
