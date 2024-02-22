@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6924858140252352703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,9 +49,10 @@ GameObject:
   - component: {fileID: 23872481693117693}
   - component: {fileID: -2603233862707149646}
   - component: {fileID: 4083448673787100868}
-  m_Layer: 0
+  - component: {fileID: 4006296736727802769}
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6924858141024749222}
+  cameraRotationLimit: 85
 --- !u!114 &6924858140742783576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ MonoBehaviour:
   mouseSensitivity: 3
   trusterForce: 1000
   jointSpring: 20
-  jumpMaxForce: 50
+  jointMaxForce: 50
 --- !u!114 &1457620967232694417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +169,8 @@ MonoBehaviour:
   - {fileID: 6924858140742783576}
   - {fileID: 6924858141024749221}
   - {fileID: 6924858141024749222}
+  - {fileID: 4006296736727802769}
+  remoteLayerName: RemotePlayer
 --- !u!114 &23872481693117693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +219,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.3, y: 1, z: -7.62}
+  m_ConnectedAnchor: {x: -2.914927, y: 0.05, z: 7.808889}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -299,6 +303,28 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4006296736727802769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6924858140742783581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6903ce92002945ad1355fbe59ce17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  weapon:
+    name: Submachine Gun
+    damage: 10
+    range: 100
+  cam: {fileID: 6924858141024749222}
+  mask:
+    serializedVersion: 2
+    m_Bits: 567
 --- !u!1 &6924858141024749275
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +336,7 @@ GameObject:
   - component: {fileID: 6924858141024749220}
   - component: {fileID: 6924858141024749222}
   - component: {fileID: 6924858141024749221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +420,7 @@ GameObject:
   - component: {fileID: 6924858141194642989}
   - component: {fileID: 6924858141194642984}
   - component: {fileID: 6924858141194642991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6924858141273648756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +531,7 @@ GameObject:
   - component: {fileID: 6924858141976934096}
   - component: {fileID: 6924858141976934099}
   - component: {fileID: 6924858141976934098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +611,7 @@ GameObject:
   - component: {fileID: 6924858142334900226}
   - component: {fileID: 6924858142334900225}
   - component: {fileID: 6924858142334900224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
