@@ -5,12 +5,13 @@ Objectif of the project:
 
 Greg:
 - PlayerMovement ✅
-- MultiplayerSystem
+- MultiplayerSystem ✅
 - ScoreSystem
 - HealSystem
 - RespawnSystem
 - Drop/PickupSystem
 - UserInformationSystem
+- JetpackSystem ✅
 
 Diogo:
 - WeaponSystem
