@@ -16,8 +16,8 @@ Greg:
 Diogo:
 - WeaponSystem
 - ReloadSystem
-- ShootingSystem
-- HitSystem
+- ShootingSystem ✅
+- HitSystem ✅
 - AmmoSystem
 
 Ricardo:
