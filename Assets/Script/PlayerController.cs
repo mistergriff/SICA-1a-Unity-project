@@ -2,6 +2,7 @@
 
 [RequireComponent(typeof(PlayerMotor))]
 [RequireComponent(typeof(ConfigurableJoint))]
+[RequireComponent (typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -12,8 +13,10 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMotor motor;
     private ConfigurableJoint joint;
+    private Animator animator;
 
     [SerializeField] private float trusterForce = 1000;
+
     [Header("Joint Options")]
     [SerializeField] private float jointSpring = 20f;
     [SerializeField] private float jointMaxForce = 50f;
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         motor = GetComponent<PlayerMotor>();
         joint = GetComponent<ConfigurableJoint>();
+        animator = GetComponent<Animator>();
 
         SetJointSettings(jointSpring);
     }
@@ -29,14 +33,17 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Calculate the velocity of the player movement
-        float xMov = Input.GetAxisRaw("Horizontal");
-        float zMov = Input.GetAxisRaw("Vertical");
+        float xMov = Input.GetAxis("Horizontal");
+        float zMov = Input.GetAxis("Vertical");
 
         Vector3 moveHorizontal = transform.right * xMov;
         Vector3 moveVertical = transform.forward * zMov;
 
         // Normalize the velocity and merge it in 1 Vector3
-        Vector3 velocity = (moveHorizontal + moveVertical).normalized * speedMovement;
+        Vector3 velocity = (moveHorizontal + moveVertical) * speedMovement;
+
+        // Play the animation of the truster
+        animator.SetFloat("ForwardVelocity", zMov);
 
         motor.Move(velocity);
 
