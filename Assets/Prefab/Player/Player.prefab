@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 4006296736727802769}
   - component: {fileID: 1413768745}
   - component: {fileID: 1054827042}
+  - component: {fileID: 959203172177909258}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -561,7 +562,7 @@ MonoBehaviour:
   syncInterval: 0.1
   weapon:
     name: Submachine Gun
-    damage: 10
+    damage: 40
     range: 100
   cam: {fileID: 6924858141024749222}
   mask:
@@ -605,6 +606,24 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 5192945634070343149}
+--- !u!114 &959203172177909258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6924858140742783581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c909da21b1a2c1344b1fc68202614b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  maxHealth: 100
+  disableOnDeath:
+  - {fileID: 4006296736727802769}
+  - {fileID: 6924858140742783576}
 --- !u!1 &6924858141024749275
 GameObject:
   m_ObjectHideFlags: 0
