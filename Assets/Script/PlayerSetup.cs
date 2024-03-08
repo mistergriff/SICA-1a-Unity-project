@@ -10,6 +10,10 @@ public class PlayerSetup : NetworkBehaviour
 
     Camera sceneCamera;
 
+    [SerializeField]
+    private GameObject playerUIPrefab;
+    private GameObject playerUIInstance;
+
     private void Start()
     {
         if(!isLocalPlayer)
@@ -49,11 +53,14 @@ public class PlayerSetup : NetworkBehaviour
         for (int i = 0; i < componentsToDisable.Length; i++)
         {
             componentsToDisable[i].enabled = false;
+            //Creation du UI du joueur local
+            playerUIInstance = Instantiate(playerUIPrefab);
         }
     }
 
     private void OnDisable()
     {
+        Destroy(playerUIInstance);
 
         if(sceneCamera != null)
         {
