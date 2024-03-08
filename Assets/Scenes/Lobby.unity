@@ -460,6 +460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4010961704963769474, guid: d91b0b914ad02904dab61af3c7c06c5c,
+        type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/Greg.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 4010961704963769485, guid: d91b0b914ad02904dab61af3c7c06c5c,
         type: 3}
       propertyPath: m_LocalPosition.x

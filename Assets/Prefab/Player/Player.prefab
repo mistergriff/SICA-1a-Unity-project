@@ -414,6 +414,10 @@ MonoBehaviour:
   - {fileID: 4006296736727802769}
   - {fileID: 1413768745}
   remoteLayerName: RemotePlayer
+  dontDrawLayerName: DontDraw
+  playerGraphics: {fileID: 6924858140742783581}
+  playerUIPrefab: {fileID: 7872993557624589986, guid: 780941e9eb436c14ea81cf411141cdaa,
+    type: 3}
 --- !u!114 &23872481693117693
 MonoBehaviour:
   m_ObjectHideFlags: 0
