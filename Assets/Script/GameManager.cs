@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     private const string playerIdPrefix = "Player";
 
-    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+    [SerializeField] private static Dictionary<string, Player> players = new Dictionary<string, Player>();
 
     public static void RegisterPlayer(string netID, Player player)
     {
