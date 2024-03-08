@@ -3,10 +3,18 @@ using Mirror;
 
 public class PlayerShoot : NetworkBehaviour
 {
-    public PlayerWeapon weapon;
+    [SerializeField]
+    private PlayerWeapon weapon;
+
+    [SerializeField] 
+    private GameObject weaponGFX;
+
+    [SerializeField]
+    private string weaponLayerName = "Weapon";
     
     [SerializeField]
     private Camera cam;
+
     [SerializeField]
     private LayerMask mask;
 
@@ -17,6 +25,8 @@ public class PlayerShoot : NetworkBehaviour
             Debug.LogError("Pas de caméra disponible");
             this.enabled = false;
         }   
+
+        weaponGFX.layer = LayerMask.NameToLayer(weaponLayerName);
     } 
 
     private void Update()
