@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(PlayerController))]
 public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField] Behaviour[] componentsToDisable;
@@ -40,6 +42,17 @@ public class PlayerSetup : NetworkBehaviour
 
             // Création du UI du joueur local
             playerUIInstance = Instantiate(playerUIPrefab);
+
+            //Configuration du UI
+            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+            if (ui == null)
+            {
+                Debug.LogError("Pas de component playerUi sur playerUiInstance");
+            }
+            else
+            {
+                ui.SetController(GetComponent<PlayerController>());
+            }
         }
 
         GetComponent<Player>().Setup();

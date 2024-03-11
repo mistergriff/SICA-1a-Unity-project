@@ -16,6 +16,14 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     [SerializeField] private float trusterForce = 1000;
+    [SerializeField] private float trusterFuelBurnedSpeed = 1f;
+    [SerializeField] private float trusterFuelRegenSpeed = 0.3f;
+    private float trusterFuelAmount = 1f;
+
+    public float GetThrusterFuelAmount()
+    {
+        return trusterFuelAmount;
+    }
 
     [Header("Joint Options")]
     [SerializeField] private float jointSpring = 20f;
@@ -65,15 +73,23 @@ public class PlayerController : MonoBehaviour
         // Calculate jetpack force
         Vector3 trusterVelocity = Vector3.zero;
 
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && trusterFuelAmount > 0)
         {
-            trusterVelocity = Vector3.up * trusterForce;
-            SetJointSettings(0f);
+            trusterFuelAmount -= trusterFuelBurnedSpeed * Time.deltaTime;
+
+            if(trusterFuelAmount >= 0.01f)
+            {
+                trusterVelocity = Vector3.up * trusterForce;
+                SetJointSettings(0f);
+            }
         }
         else
         {
+            trusterFuelAmount += trusterFuelRegenSpeed * Time.deltaTime;
             SetJointSettings(jointSpring);
         }
+
+        trusterFuelAmount = Mathf.Clamp(trusterFuelAmount, 0f, 1f);
 
         // Apply jetpack force
         motor.ApplyTruster(trusterVelocity);
