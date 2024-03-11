@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 90176148}
   - component: {fileID: 90176147}
   - component: {fileID: 90176149}
+  - component: {fileID: 3099720864571405968}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -90,6 +91,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5690f798dfb3224ca952979dbf263d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+--- !u!114 &3099720864571405968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90176145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &100979250
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +305,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1934561483}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 90176149}
+        m_MethodName: LeaveRoomBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3301620071805886529
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,12 +633,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 90176145}
-        m_MethodName: 
+      - m_Target: {fileID: 8957426130377022372}
+        m_MethodName: TogglePauseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
