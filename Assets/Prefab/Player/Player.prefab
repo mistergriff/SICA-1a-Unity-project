@@ -100,8 +100,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.34, y: -0.355, z: 0.734}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 543450652682153902}
+  m_Children: []
   m_Father: {fileID: 6924858141024749220}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -397,6 +396,7 @@ GameObject:
   - component: {fileID: 1413768745}
   - component: {fileID: 1054827042}
   - component: {fileID: 959203172177909258}
+  - component: {fileID: 6287442757825181056}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -670,12 +670,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  weapon:
-    name: Sci-Fi Automatic
-    damage: 15
-    range: 200
-  weaponGFX: {fileID: 919132148963915028}
-  weaponLayerName: Weapon
   cam: {fileID: 6924858141024749222}
   mask:
     serializedVersion: 2
@@ -736,6 +730,29 @@ MonoBehaviour:
   disableOnDeath:
   - {fileID: 4006296736727802769}
   - {fileID: 6924858140742783576}
+--- !u!114 &6287442757825181056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6924858140742783581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfc2abcc7a0d6740b4391371e8e90b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  primaryWeapon:
+    name: Blaster
+    damage: 5
+    range: 100
+    fireRate: 0
+    graphics: {fileID: 2926277759078644465, guid: 21c5b3f1529526c409468b37892cf7ed,
+      type: 3}
+  weaponHolder: {fileID: 2068714137}
+  weaponLayerName: Weapon
 --- !u!1 &6924858141024749275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,100 +1248,4 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
     type: 3}
   m_PrefabInstance: {fileID: 399585630}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1018136645
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2068714137}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 338052089ea5fa6418866dcfc3534f71,
-        type: 3}
-      propertyPath: m_Name
-      value: Sci-Fi Automatic
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 338052089ea5fa6418866dcfc3534f71, type: 3}
---- !u!1 &919132148963915028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 338052089ea5fa6418866dcfc3534f71,
-    type: 3}
-  m_PrefabInstance: {fileID: 1018136645}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &543450652682153902 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 338052089ea5fa6418866dcfc3534f71,
-    type: 3}
-  m_PrefabInstance: {fileID: 1018136645}
   m_PrefabAsset: {fileID: 0}
