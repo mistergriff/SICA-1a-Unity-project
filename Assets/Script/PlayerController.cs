@@ -40,6 +40,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        RaycastHit _hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out _hit, 100f))
+        {
+            joint.targetPosition = new Vector3(0f, -_hit.point.y, 0f);
+        }
+        else
+        {
+            joint.targetPosition = new Vector3(0f, 2f, 0f);
+        }
+
         // Calculate the velocity of the player movement
         float xMov = Input.GetAxis("Horizontal");
         float zMov = Input.GetAxis("Vertical");
