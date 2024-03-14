@@ -32,13 +32,40 @@ public class Player : NetworkBehaviour
     [SerializeField]
     private GameObject spawnEffect;
 
+    private bool firstSetup = true;
+
     public void Setup()
     {
-        wasEnabledOnStart = new bool[disableOnDeath.Length];
-        for(int i = 0; i < disableOnDeath.Length; i++)
+        if(isLocalPlayer)
         {
-            wasEnabledOnStart[i] = disableOnDeath[i].enabled;
+            //Changement de camera
+            GameManager.instance.SetSceneCameraActive(false);
+            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
         }
+
+        CmdBroadcastNewPlayerSetup();
+    }
+
+    [Command(ignoreAuthority = true)]
+    private void CmdBroadcastNewPlayerSetup()
+    {
+        RpcSetupPlayerOnAllClients();
+    }
+
+    [ClientRpc]
+    private void RpcSetupPlayerOnAllClients()
+    {
+        if(firstSetup)
+        {
+            wasEnabledOnStart = new bool[disableOnDeath.Length];
+            for (int i = 0; i < disableOnDeath.Length; i++)
+            {
+                wasEnabledOnStart[i] = disableOnDeath[i].enabled;
+            }
+
+            firstSetup = false;
+        }
+
         SetDefaults();
     }
 
@@ -49,7 +76,9 @@ public class Player : NetworkBehaviour
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
 
-        SetDefaults();
+        yield return new WaitForSeconds(0.1f);
+
+        Setup();
     }
 
     public void Update()
@@ -89,13 +118,6 @@ public class Player : NetworkBehaviour
         if (col != null)
         {
             col.enabled = true;
-        }
-
-        //Changement de camera
-        if (isLocalPlayer)
-        {
-            GameManager.instance.SetSceneCameraActive(false);
-            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
         }
 
         //Apparition du système de particule d'apparition
