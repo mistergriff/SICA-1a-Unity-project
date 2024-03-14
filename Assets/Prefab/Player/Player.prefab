@@ -479,6 +479,8 @@ MonoBehaviour:
   speedMovement: 5
   mouseSensitivity: 3
   trusterForce: 2000
+  trusterFuelBurnedSpeed: 1
+  trusterFuelRegenSpeed: 0.3
   jointSpring: 20
   jointMaxForce: 50
 --- !u!114 &1457620967232694417
@@ -524,6 +526,7 @@ MonoBehaviour:
   playerGraphics: {fileID: 6924858140252352702}
   playerUIPrefab: {fileID: 7872993557624589986, guid: 780941e9eb436c14ea81cf411141cdaa,
     type: 3}
+  playerUIInstance: {fileID: 0}
 --- !u!114 &23872481693117693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +739,13 @@ MonoBehaviour:
   disableOnDeath:
   - {fileID: 4006296736727802769}
   - {fileID: 6924858140742783576}
+  disableGameObjectOnDeath:
+  - {fileID: 6924858140252352702}
+  - {fileID: 6924858141024749275}
+  deathEffect: {fileID: 5646383049559112357, guid: fab8925979ec7e546a72121d6656c0e7,
+    type: 3}
+  spawnEffect: {fileID: 4194080855117349924, guid: 8bdd40759ae80ae47bb7c0683507e1b4,
+    type: 3}
 --- !u!1 &6924858141024749275
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(PlayerController))]
 public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField] Behaviour[] componentsToDisable;
@@ -11,14 +13,14 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField]
     private string dontDrawLayerName = "DontDraw";
 
-    Camera sceneCamera;
-
     [SerializeField]
     private GameObject playerGraphics;
 
     [SerializeField]
     private GameObject playerUIPrefab;
-    private GameObject playerUIInstance;
+
+    [HideInInspector]
+    public GameObject playerUIInstance;
 
     private void Start()
     {
@@ -29,20 +31,25 @@ public class PlayerSetup : NetworkBehaviour
         }
         else
         {
-            sceneCamera = Camera.main;
-            if(sceneCamera != null)
-            {
-                sceneCamera.gameObject.SetActive(false);
-            }
-
             // Désactiver la partie graphique du joueur local
             SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
 
             // Création du UI du joueur local
             playerUIInstance = Instantiate(playerUIPrefab);
-        }
 
-        GetComponent<Player>().Setup();
+            //Configuration du UI
+            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+            if (ui == null)
+            {
+                Debug.LogError("Pas de component playerUi sur playerUiInstance");
+            }
+            else
+            {
+                ui.SetController(GetComponent<PlayerController>());
+            }
+
+            GetComponent<Player>().Setup();
+        }
     }
 
     private void SetLayerRecursively(GameObject obj, int newLayer)
@@ -75,8 +82,6 @@ public class PlayerSetup : NetworkBehaviour
         for (int i = 0; i < componentsToDisable.Length; i++)
         {
             componentsToDisable[i].enabled = false;
-            //Creation du UI du joueur local
-            playerUIInstance = Instantiate(playerUIPrefab);
         }
     }
 
@@ -84,12 +89,11 @@ public class PlayerSetup : NetworkBehaviour
     {
         Destroy(playerUIInstance);
 
-        if(sceneCamera != null)
+        if(isLocalPlayer)
         {
-            sceneCamera.gameObject.SetActive(true);
+            GameManager.instance.SetSceneCameraActive(true);
         }
-
-        GameManager.UnregisterPlayer(transform.name);
         
+        GameManager.UnregisterPlayer(transform.name);
     }
 }

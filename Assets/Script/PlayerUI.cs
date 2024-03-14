@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
     private GameObject pauseMenu;
 
 
-    public void SetFuelController(PlayerController _controller)
+    public void SetController(PlayerController _controller)
     {
         controller = _controller;
     }
@@ -23,9 +23,9 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        //SetFuelController(controller.GetThrusterFuelAmount());
+        SetFuelAmount(controller.GetThrusterFuelAmount());
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
         }
