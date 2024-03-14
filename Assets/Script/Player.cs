@@ -19,6 +19,11 @@ public class Player : NetworkBehaviour
     [SyncVar]
     private float currentHealth;
 
+    public float GetHealthPct()
+    {
+        return (float)currentHealth / maxHealth;
+    }
+
     [SerializeField]
     private Behaviour[] disableOnDeath;
 
@@ -91,7 +96,7 @@ public class Player : NetworkBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
-            RpcTakeDamage(999);
+            RpcTakeDamage(25);
         }
 #endif
     }
