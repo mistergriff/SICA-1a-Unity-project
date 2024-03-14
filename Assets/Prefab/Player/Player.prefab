@@ -748,8 +748,8 @@ MonoBehaviour:
     name: Blaster
     damage: 5
     range: 100
-    fireRate: 0
-    graphics: {fileID: 2926277759078644465, guid: 21c5b3f1529526c409468b37892cf7ed,
+    fireRate: 10
+    graphics: {fileID: 2630908423838251871, guid: 8748ff84cab6db04d9c92872cf88c8f7,
       type: 3}
   weaponHolder: {fileID: 2068714137}
   weaponLayerName: Weapon

@@ -34,7 +34,17 @@ public class WeaponManager : NetworkBehaviour
 
         if(isLocalPlayer)
         {
-            weaponIns.layer = LayerMask.NameToLayer(weaponLayerName);
+            SetLayerRecursively(weaponIns, LayerMask.NameToLayer(weaponLayerName));
+        }
+    }
+
+    private void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 
