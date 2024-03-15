@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.33153936, b: 0.4716981, a: 1}
+  m_Color: {r: 0.025104215, g: 0, b: 0.2924528, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -463,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 4010961704963769474, guid: d91b0b914ad02904dab61af3c7c06c5c,
         type: 3}
       propertyPath: onlineScene
-      value: Assets/Scenes/Greg.unity
+      value: Assets/Scenes/Diogo.unity
       objectReference: {fileID: 0}
     - target: {fileID: 4010961704963769485, guid: d91b0b914ad02904dab61af3c7c06c5c,
         type: 3}

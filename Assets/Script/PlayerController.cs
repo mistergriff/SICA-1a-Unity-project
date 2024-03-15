@@ -40,6 +40,27 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.isOn)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+
+            motor.Move(Vector3.zero);
+            motor.Rotate(Vector3.zero);
+            motor.RotateCamera(0f);
+            motor.ApplyTruster(Vector3.zero);
+
+            return;
+        }
+
+        if(Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        // Offset for normal jetpack
         RaycastHit _hit;
         if(Physics.Raycast(transform.position, Vector3.down, out _hit, 100f))
         {

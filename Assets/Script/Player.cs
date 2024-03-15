@@ -19,6 +19,13 @@ public class Player : NetworkBehaviour
     [SyncVar]
     private float currentHealth;
 
+    public int kills;
+    public int deaths;
+    public float GetHealthPct()
+    {
+        return (float)currentHealth / maxHealth;
+    }
+
     [SerializeField]
     private Behaviour[] disableOnDeath;
 
@@ -91,7 +98,7 @@ public class Player : NetworkBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
-            RpcTakeDamage(999);
+            RpcTakeDamage(999, "Joueur");
         }
 #endif
     }
@@ -126,7 +133,7 @@ public class Player : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcTakeDamage(float amount)
+    public void RpcTakeDamage(float amount, string sourceID)
     {
         if(isDead)
         {
@@ -138,13 +145,22 @@ public class Player : NetworkBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            Die(sourceID);
         }
     }
 
-    private void Die()
+    private void Die(string sourceID)
     {
         isDead = true;
+
+        //Gestion du scoreboard
+        Player sourcePlayer = GameManager.GetPlayer(sourceID);
+        if (sourcePlayer != null)
+        {
+            sourcePlayer.kills++;
+        }
+
+        deaths++;
 
         for(int i = 0;i < disableOnDeath.Length;i++)
         {

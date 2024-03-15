@@ -32,7 +32,7 @@ public class PlayerSetup : NetworkBehaviour
         else
         {
             // Désactiver la partie graphique du joueur local
-            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
+            Util.SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
 
             // Création du UI du joueur local
             playerUIInstance = Instantiate(playerUIPrefab);
@@ -45,20 +45,10 @@ public class PlayerSetup : NetworkBehaviour
             }
             else
             {
-                ui.SetController(GetComponent<PlayerController>());
+                ui.SetPlayer(GetComponent<Player>());
             }
 
             GetComponent<Player>().Setup();
-        }
-    }
-
-    private void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        obj.layer = newLayer;
-
-        foreach (Transform child in obj.transform)
-        {
-            SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 
