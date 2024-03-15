@@ -8,7 +8,7 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField] Behaviour[] componentsToDisable;
 
     [SerializeField]
-    private string remoteLayerName = "RemotePlayer";
+    private string remoteLayerName = "RemotePlayer";    
 
     [SerializeField]
     private string dontDrawLayerName = "DontDraw";
@@ -45,7 +45,7 @@ public class PlayerSetup : NetworkBehaviour
             }
             else
             {
-                ui.SetPlayer(GetComponent<Player>());
+                ui.SetController(GetComponent<PlayerController>());
             }
 
             GetComponent<Player>().Setup();

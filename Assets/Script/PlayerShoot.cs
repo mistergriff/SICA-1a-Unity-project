@@ -3,7 +3,8 @@ using Mirror;
 
 [RequireComponent(typeof(WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
-{   
+{
+
     [SerializeField]
     private Camera cam;
 
@@ -15,19 +16,23 @@ public class PlayerShoot : NetworkBehaviour
 
     void Start()
     {
-        if(cam == null)
+        if (cam == null)
         {
-            Debug.LogError("Pas de caméra disponible");
+            Debug.LogError("Pas de caméra renseignée sur le système de tir.");
             this.enabled = false;
-        }   
+        }
 
         weaponManager = GetComponent<WeaponManager>();
-    } 
+    }
 
     private void Update()
     {
-        currentWeapon = weaponManager.GetCurrentWeapon();
+        if (PauseMenu.isOn)
+        {
+            return;
+        }
 
+        currentWeapon = weaponManager.GetCurrentWeapon();
 
         if (currentWeapon.fireRate <= 0f)
         {
@@ -47,6 +52,7 @@ public class PlayerShoot : NetworkBehaviour
                 CancelInvoke("Shoot");
             }
         }
+
     }
 
     [Command]
@@ -58,23 +64,52 @@ public class PlayerShoot : NetworkBehaviour
     [ClientRpc]
     void RpcDoHitEffect(Vector3 pos, Vector3 normal)
     {
-        GameObject hitEffect = Instantiate(weaponManager.GetCurrentGraphics().hitEffectPrefab, pos, Quaternion.LookRotation(normal));
+        var weaponGraphics = weaponManager.GetCurrentGraphics();
+        if (weaponGraphics == null)
+        {
+            Debug.LogError("Les graphismes de l'arme sont null.");
+            return;
+        }
+
+        if (weaponGraphics.hitEffectPrefab == null)
+        {
+            Debug.LogError("hitEffectPrefab est null sur les graphismes de l'arme.");
+            return;
+        }
+
+        GameObject hitEffect = Instantiate(weaponGraphics.hitEffectPrefab, pos, Quaternion.LookRotation(normal));
         Destroy(hitEffect, 2f);
     }
 
-    // Fonction appelée sur le serveur lorsque notre joueur tire
+    
+    // Fonction appelée sur le serveur lorsque notre joueur tir (On prévient le serveur de notre tir)
     [Command]
     void CmdOnShoot()
     {
-        RpcDoShootEffects();
+        RpcDoShootEffect();
     }
-
+    
     // Fait apparaitre les effets de tir chez tous les clients / joueurs
     [ClientRpc]
-    void RpcDoShootEffects()
+    void RpcDoShootEffect()
     {
-        weaponManager.GetCurrentGraphics().muzzleFlash.Play();
+        var weaponGraphics = weaponManager.GetCurrentGraphics();
+        if (weaponGraphics == null)
+        {
+            Debug.LogError("Les graphismes de l'arme sont null.");
+            return;
+        }
+
+        if (weaponGraphics.muzzleFlash == null)
+        {
+            Debug.LogError("muzzleFlash est null sur les graphismes de l'arme.");
+            return;
+        }
+
+        weaponGraphics.muzzleFlash.Play();
     }
+    
+
 
     [Client]
     private void Shoot()
@@ -90,7 +125,7 @@ public class PlayerShoot : NetworkBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, currentWeapon.range, mask))
         {
-            if(hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player")
             {
                 CmdPlayerShot(hit.collider.name, currentWeapon.damage, transform.name);
             }
@@ -102,9 +137,10 @@ public class PlayerShoot : NetworkBehaviour
     [Command]
     private void CmdPlayerShot(string playerId, float damage, string sourceID)
     {
-        Debug.Log(playerId + " a été touché");
+        Debug.Log(playerId + " a été touché.");
 
         Player player = GameManager.GetPlayer(playerId);
         player.RpcTakeDamage(damage, sourceID);
     }
+
 }
