@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public delegate void OnPlayerKilledCallBack(string player, string source);
+    public OnPlayerKilledCallBack onPlayerKilledCallBack;
+
+
     void Awake()
     {
         if (instance == null)
