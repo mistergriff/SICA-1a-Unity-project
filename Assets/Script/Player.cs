@@ -21,6 +21,10 @@ public class Player : NetworkBehaviour
 
     public int kills;
     public int deaths;
+    public float GetHealthPct()
+    {
+        return (float)currentHealth / maxHealth;
+    }
 
     [SerializeField]
     private Behaviour[] disableOnDeath;
