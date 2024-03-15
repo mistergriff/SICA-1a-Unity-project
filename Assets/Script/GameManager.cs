@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     private const string playerIdPrefix = "Player";
 
-    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+    [SerializeField] private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     [SerializeField] private GameObject sceneCamera;
 
     public MatchSettings MatchSettings;
@@ -49,10 +48,5 @@ public class GameManager : MonoBehaviour
     public static Player GetPlayer(string playerId)
     {
         return players[playerId];
-    }
-
-    public static Player[] GetAllPlayers()
-    {
-        return players.Values.ToArray();
     }
 }
