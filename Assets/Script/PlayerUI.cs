@@ -6,19 +6,19 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private RectTransform thrusterFuelFill;
 
-    /*
+    
     [SerializeField]
     private RectTransform healthBarFill;
-    */
+    
 
-    //private Player player;
+    private Player player;
     private PlayerController controller;
-    //private WeaponManager weaponmaganer;
+    private WeaponManager weaponManager;
 
-    /*
+    
     [SerializeField]
     private Text ammoText;
-    */
+    
 
     [SerializeField]
     private GameObject pauseMenu;
@@ -26,19 +26,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private GameObject scoreboard;
 
-
-    /*
     public void SetPlayer(Player _player)
     {
         player = _player;
         controller = player.GetComponent<PlayerController>();
-        //weaponManager = player.GetComponent<WeaponManager>();
-    }
-    */
-
-    public void SetController(PlayerController _controller)
-    {
-        controller = _controller;
+        weaponManager = player.GetComponent<WeaponManager>();
     }
 
     void Start()
@@ -49,8 +41,8 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         SetFuelAmount(controller.GetThrusterFuelAmount());
-        //SetHealthAmount(player.GetHealthPct());
-        //Mettre les currentAmmo SetAmmoAmount(weaponManager.currentMagazineSize); 
+        SetHealthAmount(player.GetHealthPct());
+        //SetAmmoAmount(weaponManager.currentMagazineSize); 
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -79,16 +71,17 @@ public class PlayerUI : MonoBehaviour
         thrusterFuelFill.localScale = new Vector3(1f, _amount, 1f);
     }
 
-    /*
+    
     void SetHealthAmount(float _amount)
     {
         healthBarFill.localScale = new Vector3(1f, _amount, 1f);
     }
     
-
+    
     void SetAmmoAmount(int _amount)
     {
         ammoText.text = _amount.ToString();
     }
-    */
+    
+    
 }

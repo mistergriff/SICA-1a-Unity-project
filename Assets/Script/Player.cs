@@ -98,7 +98,7 @@ public class Player : NetworkBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
-            RpcTakeDamage(999, "Joueur");
+            RpcTakeDamage(25, "Joueur");
         }
 #endif
     }
