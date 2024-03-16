@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
-public class PlayerWeapon
+[CreateAssetMenu(fileName = "WeaponData", menuName = "FPS/Weapon Data")]
+public class WeaponData : ScriptableObject
 {
     public string name = "Submachine Gun";
     public float damage = 10f;
