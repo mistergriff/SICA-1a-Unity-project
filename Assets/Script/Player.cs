@@ -73,6 +73,8 @@ public class Player : NetworkBehaviour
             }
 
             firstSetup = false;
+
+            GameManager.instance.onPlayerJoinedCallBack.Invoke(username);
         }
 
         SetDefaults();
@@ -132,8 +134,6 @@ public class Player : NetworkBehaviour
         //Apparition du système de particule d'apparition
         GameObject _gfxIns = Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);
-
-        GameManager.instance.onPlayerJoinedCallBack.Invoke(username);
     }
 
     [ClientRpc]
