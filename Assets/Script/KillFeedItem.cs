@@ -9,4 +9,9 @@ public class KillFeedItem : MonoBehaviour
     {
         text.text = source + " Killed " + player;
     }
+
+    public void Join(string player)
+    {
+        text.text = player + " joined the game";
+    }
 }

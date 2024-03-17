@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public delegate void OnPlayerKilledCallBack(string player, string source);
     public OnPlayerKilledCallBack onPlayerKilledCallBack;
 
+    public delegate void OnPlayerJoinedCallBack(string player);
+    public OnPlayerJoinedCallBack onPlayerJoinedCallBack;
+
 
     void Awake()
     {

@@ -49,6 +49,19 @@ public class PlayerSetup : NetworkBehaviour
             }
 
             GetComponent<Player>().Setup();
+
+            CmdSetUsername(transform.name, UserAccountManager.LoggedInUsername);
+        }
+    }
+
+    [Command]
+    void CmdSetUsername(string playerID, string userName)
+    {
+        Player player = GameManager.GetPlayer(playerID);
+        if(player != null)
+        {
+            Debug.Log(userName + " has joined !");
+            player.username = userName;
         }
     }
 

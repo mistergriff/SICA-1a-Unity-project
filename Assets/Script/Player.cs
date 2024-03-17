@@ -26,6 +26,8 @@ public class Player : NetworkBehaviour
         return (float)currentHealth / maxHealth;
     }
 
+    [SyncVar] public string username = "Player";
+
     [SerializeField]
     private Behaviour[] disableOnDeath;
 
@@ -130,6 +132,8 @@ public class Player : NetworkBehaviour
         //Apparition du système de particule d'apparition
         GameObject _gfxIns = Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);
+
+        GameManager.instance.onPlayerJoinedCallBack.Invoke(username);
     }
 
     [ClientRpc]
@@ -158,7 +162,7 @@ public class Player : NetworkBehaviour
         if (sourcePlayer != null)
         {
             sourcePlayer.kills++;
-            GameManager.instance.onPlayerKilledCallBack.Invoke(transform.name, sourcePlayer.name);
+            GameManager.instance.onPlayerKilledCallBack.Invoke(username, sourcePlayer.username);
         }
 
         deaths++;

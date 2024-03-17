@@ -8,7 +8,7 @@ public class PlayerScoreboardItem : MonoBehaviour
 
     public void Setup(Player player)
     {
-        usernameText.text = player.name;
+        usernameText.text = player.username;
         killsText.text = "Kills : " + player.kills;
         deathText.text = "Deaths : " + player.deaths;
     }
