@@ -81,7 +81,7 @@ public class PlayerShoot : NetworkBehaviour
         }
 
         // Ne pas faire apparaitre les trou de mur sur les joueurs | Ajouter un switch si plus de particules a faire.
-        if(tag == "Player")
+        if(tag == "Player" || tag == "Bonus")
         {
             GameObject hitEffect = Instantiate(weaponGraphics.hitEffectPrefab, pos, Quaternion.LookRotation(normal));
             Destroy(hitEffect, 10f);

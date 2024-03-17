@@ -31,7 +31,7 @@ public class WeaponManager : NetworkBehaviour
         return currentGraphics;
     }
 
-    void EquipWeapon (WeaponData _weapon)
+    public void EquipWeapon (WeaponData _weapon)
     {
         currentWeapon = _weapon;
 
