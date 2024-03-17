@@ -78,7 +78,7 @@ public class PlayerShoot : NetworkBehaviour
         }
 
         GameObject hitEffect = Instantiate(weaponGraphics.hitEffectPrefab, pos, Quaternion.LookRotation(normal));
-        Destroy(hitEffect, 2f);
+        Destroy(hitEffect, 10f);
     }
 
     
