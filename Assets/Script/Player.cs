@@ -26,7 +26,7 @@ public class Player : NetworkBehaviour
         return (float)currentHealth / maxHealth;
     }
 
-    [SyncVar] public string username = "Player";
+    [SyncVar] public string username = "You";
 
     [SerializeField]
     private Behaviour[] disableOnDeath;

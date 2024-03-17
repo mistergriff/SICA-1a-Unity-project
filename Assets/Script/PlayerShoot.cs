@@ -56,13 +56,13 @@ public class PlayerShoot : NetworkBehaviour
     }
 
     [Command]
-    void CmdOnHit(Vector3 pos, Vector3 normal)
+    void CmdOnHit(Vector3 pos, Vector3 normal, string tag)
     {
-        RpcDoHitEffect(pos, normal);
+        RpcDoHitEffect(pos, normal, tag);
     }
 
     [ClientRpc]
-    void RpcDoHitEffect(Vector3 pos, Vector3 normal)
+    void RpcDoHitEffect(Vector3 pos, Vector3 normal, string tag)
     {
         var weaponGraphics = weaponManager.GetCurrentGraphics();
         if (weaponGraphics == null)
@@ -77,8 +77,17 @@ public class PlayerShoot : NetworkBehaviour
             return;
         }
 
-        GameObject hitEffect = Instantiate(weaponGraphics.hitEffectPrefab, pos, Quaternion.LookRotation(normal));
-        Destroy(hitEffect, 10f);
+        // Ne pas faire apparaitre les trou de mur sur les joueurs | Ajouter un switch si plus de particules a faire.
+        if(tag == "Player")
+        {
+            GameObject hitEffect = Instantiate(weaponGraphics.hitEffectPrefab, pos, Quaternion.LookRotation(normal));
+            Destroy(hitEffect, 10f);
+        }
+        else
+        {
+            GameObject hitEffect = Instantiate(weaponGraphics.hitWallEffectPrefab, pos, Quaternion.LookRotation(normal));
+            Destroy(hitEffect, 10f);
+        }
     }
 
     
@@ -130,7 +139,7 @@ public class PlayerShoot : NetworkBehaviour
                 CmdPlayerShot(hit.collider.name, currentWeapon.damage, transform.name);
             }
 
-            CmdOnHit(hit.point, hit.normal);
+            CmdOnHit(hit.point, hit.normal, hit.collider.tag);
         }
     }
 
