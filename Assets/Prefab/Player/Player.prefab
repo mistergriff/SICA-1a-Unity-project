@@ -573,8 +573,8 @@ ConfigurableJoint:
   m_ConnectedBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 2, z: 0}
+  m_AutoConfigureConnectedAnchor: 0
+  m_ConnectedAnchor: {x: 0, y: 1, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -676,6 +676,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 567
+  tracerEffect: {fileID: 1749604276067796197, guid: eda56a31be7d317498d874e692f6f772,
+    type: 3}
 --- !u!95 &1413768745
 Animator:
   serializedVersion: 3
@@ -756,7 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  primaryWeapon: {fileID: 11400000, guid: 920c366d9fba2314fab8d8071148fa56, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: def3f0e179b526646892b5c59c379df8, type: 2}
   weaponHolder: {fileID: 2068714137}
   weaponLayerName: Weapon
 --- !u!1 &6924858141024749275

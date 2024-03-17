@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Mirror;
+using System.Collections;
 
 [RequireComponent(typeof(WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
@@ -13,6 +14,8 @@ public class PlayerShoot : NetworkBehaviour
 
     private WeaponData currentWeapon;
     private WeaponManager weaponManager;
+
+    [SerializeField] private GameObject tracerEffect;
 
     void Start()
     {
@@ -117,7 +120,39 @@ public class PlayerShoot : NetworkBehaviour
 
         weaponGraphics.muzzleFlash.Play();
     }
-    
+
+    // Cette fonction est appelée sur le client, mais exécute la commande sur le serveur
+    [Command]
+    void CmdSendTracer(Vector3 start, Vector3 end)
+    {
+        RpcShowTracer(start, end);
+    }
+
+    // Cette fonction est appelée sur le serveur, mais exécute l'effet sur tous les clients
+    [ClientRpc]
+    void RpcShowTracer(Vector3 start, Vector3 end)
+    {
+        StartCoroutine(ShowTracer(start, end));
+    }
+
+    private IEnumerator ShowTracer(Vector3 start, Vector3 end)
+    {
+        if (tracerEffect != null)
+        {
+            GameObject tracerInstance = Instantiate(tracerEffect, start, Quaternion.identity); // Créez une instance de l'effet de traînée
+            LineRenderer lr = tracerInstance.GetComponent<LineRenderer>(); // Obtenez le TrailRenderer de l'instance
+
+            if (lr != null)
+            {
+                lr.SetPosition(0, start);
+                lr.SetPosition(1, end);
+
+                yield return new WaitForSeconds(0.02f); // La durée pendant laquelle le tracer est visible
+
+                Destroy(tracerInstance); // Détruisez l'instance après l'affichage
+            }
+        }
+    }
 
 
     [Client]
@@ -130,10 +165,13 @@ public class PlayerShoot : NetworkBehaviour
 
         CmdOnShoot();
 
+        Vector3 start = cam.transform.position;
+        Vector3 end = start + cam.transform.forward * currentWeapon.range;
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, currentWeapon.range, mask))
+        if (Physics.Raycast(start, cam.transform.forward, out hit, currentWeapon.range, mask))
         {
+            end = hit.point; // Si le raycast touche un objet, ajustez le point de fin au point d'impact
             if (hit.collider.tag == "Player")
             {
                 CmdPlayerShot(hit.collider.name, currentWeapon.damage, transform.name);
@@ -141,6 +179,8 @@ public class PlayerShoot : NetworkBehaviour
 
             CmdOnHit(hit.point, hit.normal, hit.collider.tag);
         }
+
+        CmdSendTracer(start, end); // Envoyez les positions de départ et de fin pour afficher le tracer
     }
 
     [Command]
