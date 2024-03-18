@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2394338}
   - component: {fileID: 11424326}
   - component: {fileID: 8256786}
+  - component: {fileID: 6774527482603025029}
   m_Layer: 0
   m_Name: Fan_Wings_01
   m_TagString: Untagged
@@ -196,6 +197,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &6774527482603025029
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 64d2cd6749bca4f3892daf258e7c68a2, type: 3}
 --- !u!1 &167954
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +222,7 @@ GameObject:
   - component: {fileID: 403920}
   - component: {fileID: 3331334}
   - component: {fileID: 2325520}
+  - component: {fileID: 656854654598902705}
   m_Layer: 0
   m_Name: Fan_01
   m_TagString: Untagged
@@ -276,6 +292,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &656854654598902705
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 64d2cd6749bca4f3892daf258e7c68a2, type: 3}
 --- !u!1 &173598
 GameObject:
   m_ObjectHideFlags: 0
