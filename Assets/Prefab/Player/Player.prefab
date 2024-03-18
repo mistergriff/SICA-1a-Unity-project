@@ -758,7 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  primaryWeapon: {fileID: 11400000, guid: def3f0e179b526646892b5c59c379df8, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: 920c366d9fba2314fab8d8071148fa56, type: 2}
   weaponHolder: {fileID: 2068714137}
   weaponLayerName: Weapon
 --- !u!1 &6924858141024749275

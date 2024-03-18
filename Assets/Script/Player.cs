@@ -74,6 +74,7 @@ public class Player : NetworkBehaviour
 
             firstSetup = false;
 
+            // Message de join au moment où un joueur rejoin la partie
             GameManager.instance.onPlayerJoinedCallBack.Invoke(username);
         }
 
