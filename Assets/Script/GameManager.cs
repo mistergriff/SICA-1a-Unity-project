@@ -1,16 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     private const string playerIdPrefix = "Player";
 
-    [SerializeField] private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     [SerializeField] private GameObject sceneCamera;
 
     public MatchSettings MatchSettings;
 
     public static GameManager instance;
+
+    public delegate void OnPlayerKilledCallBack(string player, string source);
+    public OnPlayerKilledCallBack onPlayerKilledCallBack;
+
+    public delegate void OnPlayerJoinedCallBack(string player);
+    public OnPlayerJoinedCallBack onPlayerJoinedCallBack;
+
 
     void Awake()
     {
@@ -48,5 +56,10 @@ public class GameManager : MonoBehaviour
     public static Player GetPlayer(string playerId)
     {
         return players[playerId];
+    }
+
+    public static Player[] GetAllPlayers()
+    {
+        return players.Values.ToArray();
     }
 }

@@ -8,7 +8,7 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField] Behaviour[] componentsToDisable;
 
     [SerializeField]
-    private string remoteLayerName = "RemotePlayer";
+    private string remoteLayerName = "RemotePlayer";    
 
     [SerializeField]
     private string dontDrawLayerName = "DontDraw";
@@ -32,7 +32,7 @@ public class PlayerSetup : NetworkBehaviour
         else
         {
             // Désactiver la partie graphique du joueur local
-            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
+            Util.SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
 
             // Création du UI du joueur local
             playerUIInstance = Instantiate(playerUIPrefab);
@@ -49,16 +49,19 @@ public class PlayerSetup : NetworkBehaviour
             }
 
             GetComponent<Player>().Setup();
+
+            CmdSetUsername(transform.name, UserAccountManager.LoggedInUsername);
         }
     }
 
-    private void SetLayerRecursively(GameObject obj, int newLayer)
+    [Command]
+    void CmdSetUsername(string playerID, string userName)
     {
-        obj.layer = newLayer;
-
-        foreach (Transform child in obj.transform)
+        Player player = GameManager.GetPlayer(playerID);
+        if(player != null)
         {
-            SetLayerRecursively(child.gameObject, newLayer);
+            Debug.Log(userName + " has joined !");
+            player.username = userName;
         }
     }
 
