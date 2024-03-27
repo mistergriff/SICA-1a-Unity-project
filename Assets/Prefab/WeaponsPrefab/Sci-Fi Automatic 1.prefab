@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2405512893014869510}
   - component: {fileID: 7808029294476011351}
-  - component: {fileID: 3429429339660783490}
+  - component: {fileID: 6189876623267415896}
   m_Layer: 0
   m_Name: Sci-Fi Automatic 1
   m_TagString: Untagged
@@ -51,7 +51,7 @@ MonoBehaviour:
     type: 3}
   hitWallEffectPrefab: {fileID: 6296298640271898104, guid: 3ccf61c5746cacb42a5d991edc45610e,
     type: 3}
---- !u!95 &3429429339660783490
+--- !u!95 &6189876623267415896
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
