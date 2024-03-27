@@ -479,8 +479,8 @@ MonoBehaviour:
   speedMovement: 5
   mouseSensitivity: 3
   trusterForce: 2000
-  trusterFuelBurnedSpeed: 1
-  trusterFuelRegenSpeed: 0.3
+  trusterFuelBurnedSpeed: 0.7
+  trusterFuelRegenSpeed: 0.5
   jointSpring: 20
   jointMaxForce: 50
 --- !u!114 &1457620967232694417
