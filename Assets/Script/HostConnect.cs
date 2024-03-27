@@ -34,4 +34,9 @@ public class HostConnect : MonoBehaviour
 
         HostConnectGo.SetActive(false);
     }
+
+    public void ExitApplication()
+    {
+        Application.Quit();
+    }
 }
