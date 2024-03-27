@@ -125,6 +125,9 @@ public class PlayerShoot : NetworkBehaviour
         }
 
         weaponGraphics.muzzleFlash.Play();
+
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(currentWeapon.ShootSound);
     }
 
     // Cette fonction est appelée sur le client, mais exécute la commande sur le serveur

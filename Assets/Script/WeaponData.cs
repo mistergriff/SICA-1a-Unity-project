@@ -13,4 +13,7 @@ public class WeaponData : ScriptableObject
     public float reloadTime = 1.5f;
 
     public GameObject graphics;
+
+    public AudioClip ShootSound;
+    public AudioClip ReloadSound;
 }
