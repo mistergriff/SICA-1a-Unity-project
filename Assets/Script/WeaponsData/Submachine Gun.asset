@@ -16,5 +16,7 @@ MonoBehaviour:
   damage: 10
   range: 200
   fireRate: 10
+  magazineSize: 20
+  reloadTime: 2
   graphics: {fileID: 2630908423838251871, guid: 8748ff84cab6db04d9c92872cf88c8f7,
     type: 3}

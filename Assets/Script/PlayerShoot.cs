@@ -30,12 +30,18 @@ public class PlayerShoot : NetworkBehaviour
 
     private void Update()
     {
+        currentWeapon = weaponManager.GetCurrentWeapon();
+
         if (PauseMenu.isOn)
         {
             return;
         }
 
-        currentWeapon = weaponManager.GetCurrentWeapon();
+        if(Input.GetKeyDown(KeyCode.R) && weaponManager.currentMagazineSize < currentWeapon.magazineSize)
+        {
+            StartCoroutine(weaponManager.Reload());
+            return;
+        }
 
         if (currentWeapon.fireRate <= 0f)
         {
@@ -158,10 +164,20 @@ public class PlayerShoot : NetworkBehaviour
     [Client]
     private void Shoot()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || weaponManager.isReloading)
         {
             return;
         }
+
+        if(weaponManager.currentMagazineSize <= 0)
+        {
+            StartCoroutine(weaponManager.Reload());
+            return;
+        }
+
+        weaponManager.currentMagazineSize--;
+
+        Debug.Log("Il reste " +  weaponManager.currentMagazineSize);
 
         CmdOnShoot();
 

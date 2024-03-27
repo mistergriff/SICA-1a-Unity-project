@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2405512893014869510}
   - component: {fileID: 7808029294476011351}
+  - component: {fileID: 3429429339660783490}
   m_Layer: 0
   m_Name: Sci-Fi Automatic 1
   m_TagString: Untagged
@@ -50,6 +51,25 @@ MonoBehaviour:
     type: 3}
   hitWallEffectPrefab: {fileID: 6296298640271898104, guid: 3ccf61c5746cacb42a5d991edc45610e,
     type: 3}
+--- !u!95 &3429429339660783490
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630908423838251871}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24518d8ace118724fb9f0ba4e2d06657, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4769456740356443013
 GameObject:
   m_ObjectHideFlags: 0

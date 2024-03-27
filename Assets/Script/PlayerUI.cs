@@ -42,7 +42,7 @@ public class PlayerUI : MonoBehaviour
     {
         SetFuelAmount(controller.GetThrusterFuelAmount());
         SetHealthAmount(player.GetHealthPct());
-        //SetAmmoAmount(weaponManager.currentMagazineSize); 
+        SetAmmoAmount(weaponManager.currentMagazineSize); 
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
