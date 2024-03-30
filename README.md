@@ -6,25 +6,26 @@ Objectif of the project:
 Greg:
 - PlayerMovement ✅
 - MultiplayerSystem ✅
-- ScoreSystem
-- HealSystem
-- RespawnSystem
-- Drop/PickupSystem
-- UserInformationSystem
+- ScoreSystem ✅
+- HealSystem ✅
+- RespawnSystem ✅
+- Drop/PickupSystem ✅
+- UserInformationSystem ✅
 - JetpackSystem ✅
 
 Diogo:
-- WeaponSystem
-- ReloadSystem
+- WeaponSystem ✅
+- ReloadSystem ✅
 - ShootingSystem ✅
 - HitSystem ✅
-- AmmoSystem
+- AmmoSystem ✅
 
 Ricardo:
-- PauseMenu
-- HUD
-- MapSystem
-- SoundDesign
+- PauseMenu ✅
+- HUD ✅
+- MapSystem ✅
+- SoundDesign ✅
 
 Optional :
 - DedicatedServer
+- Personal launcher ✅
